@@ -9,40 +9,42 @@ package listasenlazadas;
  *
  * @author julio
  */
-public class Lista 
-{
-    protected Nodo punteroInicio,punteroFin;
-    
+public class Lista {
+
+    protected Nodo punteroInicio, punteroFin;
+    public int size = 0;
+
     //Constructor para inicializar los punteros
-    public Lista()
-    {
-        punteroInicio=null;
-        punteroFin=null;
-        
+    public Lista() {
+        punteroInicio = null;
+        punteroFin = null;
+
     }
-    
+
     //Agregar nodo al inicio de la lista
-    public void insertarAlinicio(String item)
-    {
+    public void insertarAlinicio(String item) {
         //crear nodo
-        punteroInicio=new Nodo(item,punteroInicio);
+        punteroInicio = new Nodo(item, punteroInicio);
         //validacion si exiten nodos
-        if(punteroFin==null)
-        {
-            punteroFin=punteroInicio;
-            
+        if (punteroFin == null) {
+            punteroFin = punteroInicio;
         }
     }
-    
+
     //mostrar datos
-    public void imprimirLista()
-    {
-        Nodo recorrer=punteroInicio;
-        while (recorrer!= null)
-        {
-            System.out.print(" Nombre: "+recorrer.nombre+"->");
-            recorrer=recorrer.punteroEnlace;
+    public void imprimirLista() {
+        System.out.println("1° Menu");
+        Nodo recorrer = punteroInicio;
+        while (recorrer != null) {
+            System.out.print(" Nombre -> " + recorrer.nombre);
+            recorrer = recorrer.punteroEnlace;
         }
     }
-    
+    //mostar tamaña de la pila
+    public void size(){
+        System.out.println("\nTamaño del menu: "+size);
+        //return size;
+    }
+
+
 }
