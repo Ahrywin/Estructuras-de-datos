@@ -27,8 +27,8 @@ public class ListasEnlazadas {
         do {
             try {
                 opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "1.-Agregar Nombre del menu \n2.-Imprimir primer Menu "
-                        + "\n3.-Crear un menu diferente \n4.-Mostar todos los menus \n5.-Salir ", "Menú", 3));
+                        "1.-Ingresa nombre del menu (Listas)\n2.-Imprimir lista"
+                        + "\n3.- Ingresa nombre del menu (coleccion) \n4.-Mostar todas las estructuras de datos \n5.-Salir ", "Menú", 3));
 
                 switch (opcion) {
                     case 1:
