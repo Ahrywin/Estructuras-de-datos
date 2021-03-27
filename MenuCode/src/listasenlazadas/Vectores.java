@@ -17,12 +17,14 @@ public class Vectores {
  
  
     
-    public void AddElement(String dato,int i)
+    public void AddElement(String dato,int lim)
     {
-        
-      
-        System.out.println(i+dato);
+        //String nombre[]= new String[lim];
+        limite = lim;
         //agregar al vector
+        for(int i = 1; i<lim; i++){
+            nombre[i]= dato;
+        }
        
 
     }
@@ -30,6 +32,9 @@ public class Vectores {
     public void PrintElement()
     {
       //  System.out.println("- "+NombreMenu);
+        for(int i = 1; i<limite;i++){
+            System.out.println("-Nombre: "+nombre[i]);
+        }
     
     }
     
