@@ -20,21 +20,27 @@ public class ListasEnlazadas {
 
     public static void main(String[] args) {
         Set<Coleccion> setMenu = new HashSet<>();
+        Cola cola = new Cola();
+        Pilas pila = new Pilas();
         Lista lista = new Lista();
         Vectores vector = new Vectores();
         int opcion = 0;
-        int limiteUsuario=0;
+        int limiteUsuario = 0;
         String nombre;
         String nombrev;
 
         do {
             try {
                 opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "1.-Ingresa nombre del menu (Listas)\n2.-Imprimir lista"
-                        + "\n3.- Ingresa nombre del menu (coleccion) \n4.-Ingresa vector menu \n 5.-Mostar todas las estructuras de datos \n6.-Salir ", "Menú", 3));
+                        "1.-Ingresa nombre del menu (Listas)\n2.-Ingresa nombre del menu (coleccion)"
+                        + "\n3.-Ingresa vector menu  \n4.-Instertar nombre del menu (Cola) "
+                        + "\n5.-Instertar nombre del menu (Pila)"
+                        + "\n 6.-Mostar todas las estructuras de datos \n7.-Salir ", "Menú", 3));
 
-                switch (opcion) 
-                {
+                /*"1.-Ingresa nombre del menu (Listas)\n2.-Imprimir lista"
+                        + "\n3.- Ingresa nombre del menu (coleccion) \n4.-Mostar todas las estructuras de datos "
+                                + "\n5.-Instertar cola\n6.-Pilas \n7.-Salir ", "Menú", 3));*/
+                switch (opcion) {
                     case 1:
                      try {
                         nombre = JOptionPane.showInputDialog("Ingresa el nombre: ", 3);
@@ -43,57 +49,66 @@ public class ListasEnlazadas {
                         JOptionPane.showMessageDialog(null, "Debes ingresar un nombre ");
                     }
                     break;
-                    
+
                     case 2:
-                        lista.imprimirLista();
-                        break;
-                    case 3:try {
-                        nombre = JOptionPane.showInputDialog(null,"Ingresa el nombre: "," Menu",3);
+                        try {
+                        nombre = JOptionPane.showInputDialog(null, "Ingresa el nombre: ", " Menu", 3);
                         creadorMenu(setMenu, nombre);//Agrega a la coleccion
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Debes ingresar un nombre ");
                     }
-                        break;
-                        
-                        //Vectores
-                    case 4:
-                        try 
-                    {
-                        
-                        limiteUsuario=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingresa el Limite del arreglo:","limie",3));
-                            if (limiteUsuario>0)
-                            {
-                                 vector.limite=limiteUsuario;
-                            
-                             int i =0;
-                             while(i<=limiteUsuario)
-                             {
-                                 
-                                  nombre = JOptionPane.showInputDialog(null,"Ingresa el nombre"+i +": "," Menu",3);
-                                  vector.AddElement(nombre,i);//Agrega el vector
-                                 
-                                  i++;
-                             }
-                            
+                    break;
+                    case 3://Vectores
+                        try {
 
-                        }else
-                            {
-                                 JOptionPane.showMessageDialog(null, "El limite no debe ser 0 ni negativo ");
-                                   break;
+                        limiteUsuario = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el Limite del arreglo:", "limie", 3));
+                        if (limiteUsuario > 0) {
+                            vector.limite = limiteUsuario;
+
+                            int lim = 0;
+                            while (lim <= limiteUsuario) {
+
+                                nombre = JOptionPane.showInputDialog(null, "Ingresa el nombre" + lim + ": ", " Menu", 3);
+                                vector.AddElement(nombre, lim);//Agrega el vector
+
+                                lim++;
                             }
-                           
-                    } 
-                        catch (Exception e) {
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El limite no debe ser 0 ni negativo ");
+                            break;
+                        }
+
+                    } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Debes ingresar un nombredsfsd ");
                     }
-                        break;
-                        
+                    break;
+                    case 4:
+                        try {
+                        nombre = JOptionPane.showInputDialog(null, "Ingresa el nombre: ", "3° Menu-Cola", 3);
+                        cola.insertar(nombre);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Debes ingresar un nombredsfsd ");
+                    }
+                    break;
+
                     case 5:
+                        try {
+                        nombre = JOptionPane.showInputDialog(null, "Ingresa el nombre: ", "3° Menu-Pila", 3);
+                        pila.push(nombre);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Debes ingresar un nombredsfsd ");
+                    }
+                    break;
+                    case 6:
+
                         lista.imprimirLista();
                         visualizarConjunto(setMenu);
                         vector.PrintElement();
+                        cola.mostrar();
+                        pila.peek();
                         break;
-                    case 6:
+                    case 7:
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Debes ingresar una opcion valida ");
@@ -103,15 +118,17 @@ public class ListasEnlazadas {
 
             }
 
-        } while (opcion != 6);
+        } while (opcion != 7);
 
     }
 //Creaccion de un Menu con Colecciones
+
     private static void creadorMenu(Set<Coleccion> setMenu, String nombre) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         setMenu.add(new Coleccion(nombre));
     }
 //Visualiza la Coleccion
+
     public static void visualizarConjunto(Set<Coleccion> conjunto) {
         System.out.println("\n2° Menu");
         for (Coleccion menu : conjunto) {
